@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+motor==3.3.2
+pymongo==4.6.1
+beanie
+openai
+pydantic[email]
+python-dotenv
+pydantic-settings
