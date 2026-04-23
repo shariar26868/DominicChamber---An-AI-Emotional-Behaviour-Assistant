@@ -1,3 +1,26 @@
+def rating_questions_prompt(conversation_text: str) -> str:
+    return f"""
+You are an expert at evaluating conversations and generating insightful rating questions.
+
+Below is a conversation between a user and an AI advisor:
+
+{conversation_text}
+
+Based on this conversation, generate 3 to 5 specific rating questions that the user can answer
+to evaluate the quality and usefulness of the advice given.
+
+Each question should be directly related to the content of the conversation.
+
+Respond ONLY in this JSON format, no extra text:
+{{
+  "questions": [
+    {{"question": "How helpful was the advice about [specific topic from conversation]?"}},
+    {{"question": "How clear was the explanation of [specific aspect]?"}}
+  ]
+}}
+"""
+
+
 def questionnaire_prompt(name: str, relationship: str, description: str) -> str:
     return f"""
 You are a relationship and communication expert.
