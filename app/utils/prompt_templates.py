@@ -1,3 +1,31 @@
+def recommended_actions_prompt(name: str, relationship: str, traits: list, answers: list) -> str:
+    traits_text = ", ".join(traits) if traits else "Not analyzed yet"
+    answers_text = "\n".join(
+        [f"Q: {a['question']}\nA: {a['selected_option']}" for a in answers]
+    ) if answers else "No questionnaire data yet"
+
+    return f"""
+You are a relationship and communication coach.
+
+The user wants to improve their relationship with "{name}" ({relationship}).
+Personality traits of {name}: {traits_text}
+
+What we know about {name}:
+{answers_text}
+
+Generate 3 to 5 specific, actionable tasks the user can do TODAY to improve their relationship with {name}.
+Each task should be short, practical, and directly related to {name}'s personality.
+
+Respond ONLY in this JSON format, no extra text:
+{{
+  "actions": [
+    {{"title": "Ask {name} about their weekend or interests"}},
+    {{"title": "Pay {name} a genuine compliment based on recent observation"}}
+  ]
+}}
+"""
+
+
 def rating_questions_prompt(conversation_text: str) -> str:
     return f"""
 You are an expert at evaluating conversations and generating insightful rating questions.

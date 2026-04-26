@@ -13,7 +13,8 @@ from app.routers import (
     guidance,
     conversations,
     ratings,
-    message_rewrite
+    message_rewrite,
+    tasks
 )
 
 
@@ -53,6 +54,7 @@ app.include_router(guidance.router)
 app.include_router(conversations.router)
 app.include_router(ratings.router)
 app.include_router(message_rewrite.router)
+app.include_router(tasks.router)
 
 
 @app.get("/")
